@@ -1,0 +1,42 @@
+﻿@using ViewBagData.Models
+@model IEnumerable<Student>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2>StudentList</h2>
+<div class="container jumbotron">
+    Total No of Student in class: @ViewBag.TotalStudents
+</div>
+
+<div class="container jumbotron">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>RollNo</th>
+                <th>FullAddress</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in (List<Student>)ViewBag.TotalStudent)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.FullName</td>
+                    <td>@c.RollNo</td>
+                    <td>@c.FullAddress</td>
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+</div>
+
+
+

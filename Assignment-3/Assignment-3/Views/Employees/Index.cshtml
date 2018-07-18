@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Assignment_3.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+
+<p>
+    @* @Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create","Employees")">Add New Employee</a>
+</p>
+<div>
+    <table id="mytable" class="table table-hover">
+        <thead>
+            <tr style="background-color: darkblue;color: white">
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Workspeciality)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Income)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MobileNo)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Workspeciality)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Income)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobileNo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section mysection
+{
+    <script src="~/Content/jquery.dataTables.min.js"></script>
+    <script src="~/Content/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#mytable").DataTable();
+        });
+    </script>
+}
+<script type="text/javascript">
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 31.520370, lng: 74.358747 },
+            zoom: 16
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATEuOpHT-0NfDNK72OzTOLpwyQUs2skAY&callback=initMap"
+        async defer></script>
